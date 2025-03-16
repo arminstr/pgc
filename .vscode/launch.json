@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "cwd": "${workspaceRoot}",
+        "executable": "./target/thumbv7em-none-eabihf/debug/pgc", 
+        "name": "Debug Microcontroller (launch)",
+        "request": "launch",
+        "preLaunchTask": "rust: cargo build",
+        "type": "cortex-debug",
+        "configFiles": [
+          "interface/jlink.cfg",
+        ],
+        "servertype": "openocd",
+        "openOCDLaunchCommands": [
+          "transport select swd",
+          "source [find target/stm32f3x.cfg]"
+        ],
+      }
+    ]
+}

@@ -1,0 +1,18 @@
+[target.thumbv7em-none-eabihf]
+runner = 'probe-rs run --chip STM32F302K8'
+
+[build]
+target = "thumbv7em-none-eabihf"
+rustflags = ["-C", "opt-level=z"]  # Optimize for size
+
+
+[profile.dev]
+opt-level = 1  # Slight optimization for debug builds
+
+[profile.release]
+debug = true
+opt-level = "z"  # Optimize for smallest possible size
+lto = "thin"      # Enable Link-Time Optimization
+panic = "abort"   # Remove panic unwinding for smaller binary
+
+
